@@ -18,10 +18,11 @@ public class SignupServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String jdbcUri = "com.mysql.cj.jdbc.Driver";
-        String dbUri = "jdbc:mysql://localhost:3306/mysql";
-        String dbId = "root";
-        String dbPass = "";
+        String jdbcUri = getServletContext().getInitParameter("jdbcUri");
+        String dbUri = getServletContext().getInitParameter("dbUri");
+        String dbId = getServletContext().getInitParameter("dbId");
+        String dbPass = getServletContext().getInitParameter("dbPass");
+
         response.setContentType("text/html");
         PrintWriter pw = response.getWriter();
 

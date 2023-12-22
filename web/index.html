@@ -9,11 +9,11 @@
     <script>
         function validator(){
             var emailRegex = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
-            var email = document.getElementById("mail")
+            var email = document.getElementById("mail").value;
             var pass1 = document.getElementById("pass1").value;
             var pass2 = document.getElementById("pass2").value;
             
-            if(emailRegex.test(email)){
+            if(!emailRegex.test(email)){
                 alert("Invalid Email !");
                 return false;
             }
