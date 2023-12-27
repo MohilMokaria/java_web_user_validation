@@ -1,5 +1,6 @@
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -13,7 +14,10 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@WebServlet("/SignupServlet")
 public class SignupServlet extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,15 +44,15 @@ public class SignupServlet extends HttpServlet {
 
                 if (rs.next()) {
                     pw.println("<h1>User already registered with " + email + "</h1>");
-                    pw.println("<br><a href=\"./index.html\">Try Again with new email</a>");
-                    pw.println("<br><br><a href=\"./login.html\">Login to existing account</a>");
+                    pw.println("<br><a href=\"./index.jsp\">Try Again with new email</a>");
+                    pw.println("<br><br><a href=\"./login.jsp\">Login to existing account</a>");
                 } else {
                     PreparedStatement ps2 = con.prepareStatement("INSERT INTO login(mail, pass) values(?,?)");
                     ps2.setString(1, email);
                     ps2.setString(2, pass1);
 
                     int i = ps2.executeUpdate();
-                    response.sendRedirect("./login.html");
+                    response.sendRedirect("./login.jsp");
                 }
             }
         } catch (SQLException | ClassNotFoundException ex) {

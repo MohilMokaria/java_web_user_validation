@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +49,7 @@
 
         <center><button type="submit">Sign-up</button></center>
         
-        <p>Already Signed-up? <a href="./login.html">Login</a></p>
+        <p>Already Signed-up? <a href="./login.jsp">Login</a></p>
     </form>
 </body>
 </html>
