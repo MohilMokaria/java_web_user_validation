@@ -14,9 +14,12 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Invalidate the session
+        // Retrieve the session, if it exists
         HttpSession session = request.getSession(false);
+
+        // Check if the session is not null (i.e., the user is logged in)
         if (session != null) {
+            // Invalidate (close) the session to log the user out
             session.invalidate();
         }
 
